@@ -21,15 +21,16 @@ function showPage (list, page){
   // if page = 2, endIndex = (2 * 10) = 20, results in 20 items
   let endIndex = page * itemsPerPage;
     // now loop through the array [listItems] in order to show the ones that fit the criteria, and hide those that don't.
-    // so i will start at 0, and be no greater than the length of the [listItems], and count upward by 1.
+    // so 'i' will start at 0, and be no greater than the length of the [listItems], and count upward by 1.
     for (let i = 0; i < list.length; i += 1){
-      // the item variable equals the individual item in the [listItems].     
+      // the item variable equals the individual item in the [listItems]. I don't need to write this way, but it simplifies things.    
       let item = list[i];
+      // this first loop will turn all of the items "off"
       item.style.display = 'none';
     }
-      // if the startIndex (a function of the 'page' input) is less than or equal to the individual item, it should be 'displayed',
-      // and display all those up until endIndex.
+      // this second loop will turn "on" the items that fit the criteria.
      for (let i = 0; i < list.length; i += 1){
+        // the 'if' function here creates 10 total items per page 
         if (i >= startIndex && i < endIndex ){
           let item = list[i];
           item.style.display = '';
@@ -43,32 +44,36 @@ function showPage (list, page){
 showPage(listItems,1);
 
 
-
-
-/***
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
-
-
-
-
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+const appendPageLinks = (list) => {
+    const pages = Math.ceil(list.length / itemsPerPage);
+    const div = document.createElement('div');
+      div.elementClassName = 'pagination';
+    const pageDiv = document.querySelector('.page')
+      pageDiv.appendChild(div);
+    const ul = document.createElement('ul');
+      div.appendChild(ul);
+        for (let i = 1; i <= pages; i +=1){
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            li.textContent = i;
+            li.appendChild(a);
+            ul.appendChild(li);
+            
 
-//function appendPageLinks (){
+         
+        }
+        return appendPageLinks;
+      }
+     
 
 
-//}
+appendPageLinks(listItems);
+
+
 
 
 
