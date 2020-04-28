@@ -4,14 +4,12 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 //Create a variable to store the student list item elements in the student list.
-const listItems = document.querySelectorAll('.student-item cf');
+const listItems = document.querySelectorAll('.student-item');
 
 //Pro Tip: Log out the variable storing the list to ensure it equals the list of li items and not the container of the li elements.
 //Create a variable to store the number of items to show on each “page”, which for this project, is 10.
-
 const itemsPerPage = 10;
 
- 
   // Create the `showPage` function to hide all of the items in the 
   // list except for the ten you want to show.
 
@@ -24,20 +22,29 @@ function showPage (list, page){
   let endIndex = page * itemsPerPage;
     // now loop through the array [listItems] in order to show the ones that fit the criteria, and hide those that don't.
     // so i will start at 0, and be no greater than the length of the [listItems], and count upward by 1.
-    for (i = 0; i < listItems.length; i += 1){
-      // the item variable equals the individual item in the [listItems]
-      let item = listItems[i];
+    for (let i = 0; i < list.length; i += 1){
+      // the item variable equals the individual item in the [listItems].     
+      let item = list[i];
+      item.style.display = 'none';
+    }
       // if the startIndex (a function of the 'page' input) is less than or equal to the individual item, it should be 'displayed',
       // and display all those up until endIndex.
-      if (startIndex <= item < endIndex){
+     for (let i = 0; i < list.length; i += 1){
+        if (i >= startIndex && i < endIndex ){
+          let item = list[i];
           item.style.display = '';
-      } else {
-          item.style.display = 'none';
+          }    
       }
-    }   
-}
+  }   
+   
+
+
 
 showPage(listItems,1);
+
+
+
+
 /***
    Pro Tips: 
      - Keep in mind that with a list of 54 students, the last page 
@@ -58,10 +65,10 @@ showPage(listItems,1);
    functionality to the pagination buttons.
 ***/
 
-function appendPageLinks (){
+//function appendPageLinks (){
 
 
-}
+//}
 
 
 
