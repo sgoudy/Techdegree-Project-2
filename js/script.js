@@ -39,8 +39,7 @@ const showPage = (list, page) => {
   }   
    
 
-showPage(listItems, 5);
-
+showPage(listItems, 1);
 
 
 /*** 
@@ -66,27 +65,27 @@ const appendPageLinks = (list) => {
             li.appendChild(a);
             ul.appendChild(li);
             a.textContent = i;
-            a.setAttribute('href', "#");
-                a.addEventListener('click', (e) => {
-                  if (event.target.tagName === 'A') {
-                    showPage(list, i);
-                    a.className = 'active';
-                  } else {
-                    a.className = '';
-                  }
-                });
-                  
-                  
-          }
-
-    
-         
-        }
-
-        
-       
-      
+            a.setAttribute('href', "#");  
+            }
+  // Select all of the 'a' elements and group them together in order to be able to break them apart with a loop
+    const buttons = document.querySelectorAll('a');
+   // Designate page 1 as 'active'.
      
+  // This loop adds 'event listeners to all of the buttons'
+  for (let i = 0; i < buttons.length; i +=1){ 
+          buttons[0].classList.add('active');          
+          const btn = buttons[i];
+          const btnEvent = btn.addEventListener('click', (event) =>{
+              if (event.target.tagName === 'A'){
+              //this needs correcting somehow.
+                showPage(list , (i+1));
+                buttons[i].classList.remove('active');
+              }
+          });
+      }
+   }
+
+ 
 
 
 appendPageLinks(listItems);
