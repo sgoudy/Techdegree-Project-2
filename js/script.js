@@ -52,7 +52,7 @@ const appendPageLinks = (list) => {
     const pages = Math.ceil(list.length / itemsPerPage);
     // Create a 'div' element and give it the class name 'pagination'
     const div = document.createElement('div');
-    div.elementClassName = 'pagination';
+    div.className = 'pagination';
     // Attach the new div element to the div with class name 'page.'
     const pageDiv = document.querySelector('.page');
     pageDiv.appendChild(div);
@@ -63,14 +63,18 @@ const appendPageLinks = (list) => {
       for (let i = 1; i <= pages; i +=1){
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.textContent= i;
+            li.appendChild(a);
             ul.appendChild(li);
-            ul.appendChild(a);
+            a.textContent = i;
+            a.setAttribute('href', "#");
                 a.addEventListener('click', (e) => {
                   if (event.target.tagName === 'A') {
                     showPage(list, i);
+                    a.className = 'active';
+                  } else {
+                    a.className = '';
                   }
-                  });
+                });
                   
                   
           }
