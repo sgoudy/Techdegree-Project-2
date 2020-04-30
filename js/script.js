@@ -13,7 +13,7 @@ const itemsPerPage = 10;
   // Create the `showPage` function to hide all of the items in the 
   // list except for the ten you want to show.
 
-function showPage (list, page){
+const showPage = (list, page) => {
   // if page = 1, startIndex = (1*10) - 10 = 0, the first item on page 1 would be listItems[0].
   // if page = 2, startIndex = (2*10) - 10 = 10, the first item on page 2 would be listItems[10]. And so on...
   let startIndex = (page * itemsPerPage) - itemsPerPage;
@@ -39,9 +39,8 @@ function showPage (list, page){
   }   
    
 
+showPage(listItems, 5);
 
-
-showPage(listItems,1);
 
 
 /*** 
@@ -49,25 +48,40 @@ showPage(listItems,1);
    functionality to the pagination buttons.
 ***/
 const appendPageLinks = (list) => {
+    // Create an equation that allows for 10 items per page.
     const pages = Math.ceil(list.length / itemsPerPage);
+    // Create a 'div' element and give it the class name 'pagination'
     const div = document.createElement('div');
-      div.elementClassName = 'pagination';
-    const pageDiv = document.querySelector('.page')
-      pageDiv.appendChild(div);
+    div.elementClassName = 'pagination';
+    // Attach the new div element to the div with class name 'page.'
+    const pageDiv = document.querySelector('.page');
+    pageDiv.appendChild(div);
+    // Create an unordered list and attach it to the new div element.
     const ul = document.createElement('ul');
-      div.appendChild(ul);
-        for (let i = 1; i <= pages; i +=1){
+    div.appendChild(ul);  
+        // For each section of 10 students, create a 'li' and 'a' 
+      for (let i = 1; i <= pages; i +=1){
             const li = document.createElement('li');
             const a = document.createElement('a');
-            li.textContent = i;
-            li.appendChild(a);
+            a.textContent= i;
             ul.appendChild(li);
-            
+            ul.appendChild(a);
+                a.addEventListener('click', (e) => {
+                  if (event.target.tagName === 'A') {
+                    showPage(list, i);
+                  }
+                  });
+                  
+                  
+          }
 
+    
          
         }
-        return appendPageLinks;
-      }
+
+        
+       
+      
      
 
 
