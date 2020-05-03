@@ -22,8 +22,6 @@ studSearchInput.value = '';
 studSearchInput.className = 'student-search';
 form.appendChild(studSearchInput);  
 
-
-
 // Create the `showPage` function 
 // *Added the search variable for the search event listener below.
 const showPage = (list, page, search) => {
@@ -79,7 +77,7 @@ const appendPageLinks = (list) => {
           if (event.target.tagName === 'A'){
             showPage(list, (1+i));
             ulStudLis.removeChild(lis);
-            }
+           }
       });       
     };
 // Added an 'exceeds' event listener to allow for searching.
@@ -90,14 +88,13 @@ const appendPageLinks = (list) => {
 // This loop allows me to compare the input text to the array of student names and see if the value exists (> -1).
 // If it does, a list item is created that includes all of the info for that student.
 // I called the function show page and added the variable lis
-          for (let i = 0; i < studentName.length; i +=1){
-            if (studentName[i].textContent.toLowerCase().indexOf(studSearchInput.value.toLowerCase()) > -1) {           
-              lis.textContent = studentInfo[i].textContent;
-              ulStudLis.appendChild(lis);         
-              showPage(list, i, lis);
-              }
-            }
-    });
+      for (let i = 0; i < studentName.length; i +=1){
+        if (studentName[i].textContent.toLowerCase().indexOf(studSearchInput.value.toLowerCase()) > -1) {           
+          lis.textContent = studentInfo[i].textContent;
+          ulStudLis.appendChild(lis);         
+          showPage(list, i, lis);
+         } 
+        }
+   });
  }
- 
 appendPageLinks(listItems);
