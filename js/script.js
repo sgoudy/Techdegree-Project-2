@@ -74,6 +74,8 @@ const appendPageLinks = (list) => {
 appendPageLinks(listItems)
 
 //-------------------------------------------------------------------------------//
+// Search functionality
+// 
 const input = document.querySelector('input');
 const btn = document.querySelector('button');
 
