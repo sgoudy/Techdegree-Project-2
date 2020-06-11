@@ -4,6 +4,12 @@ body{
   color: #fff;
 }
 
+p{
+  color: #555;
+  font-size: 14px;
+  padding-top: .5em
+}
+
 .page{
   margin: 50px auto;
   width: 70%;
@@ -27,7 +33,7 @@ body{
     float: right;
   }
 
-    .page-header .student-search input{
+    .page-header .student-search input {
       border-radius: 5px;
       border: 1px solid black;
       padding: 8px 15px;

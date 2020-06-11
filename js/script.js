@@ -8,12 +8,15 @@ const headerEl = document.querySelector('.cf');
 
  // Add search button
 const search = document.createElement('div');
-search.innerHTML = `
+const form = document.createElement('form');
+form.innerHTML = `
           <div class="student-search">
           <input placeholder="Search for students...">
           <button>Search</button>
+          <p>To Reset Form: Clear Search & Hit Enter</p>
           </div>`
 headerEl.appendChild(search);
+search.appendChild(form)
 
 // Create the `showPage` function 
 // *Added the search variable for the search event listener below.
@@ -77,7 +80,6 @@ appendPageLinks(listItems)
 // Search functionality
 // 
 const input = document.querySelector('input');
-const btn = document.querySelector('button');
 
 function formSearch(e) {
     const studItem = document.getElementsByClassName('student-item');
@@ -97,10 +99,5 @@ function formSearch(e) {
         }
     }
 }
-     
-    
-    
-
-
-btn.addEventListener('click', formSearch)
-
+ 
+form.addEventListener('submit', formSearch)
